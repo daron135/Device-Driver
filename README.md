@@ -50,7 +50,6 @@ sudo rmmod ledkey_dev_pjb
 
 ## 구현 결과
 
-
 https://github.com/daron135/Device-Driver/assets/140676907/2649c9be-6aeb-4633-b637-e09784765e32
 
 
