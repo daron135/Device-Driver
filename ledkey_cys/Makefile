@@ -5,7 +5,7 @@ obj-m := $(MOD).o
 
 CROSS = ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf-
 CC := arm-linux-gnueabihf-gcc
-KDIR := /home/ubuntu/pi_bsp/kernel/linux
+KDIR := "User Directory Address"/kernel/linux
 PWD := $(shell pwd)
 
 default:$(APP)
