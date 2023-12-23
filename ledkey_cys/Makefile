@@ -8,6 +8,7 @@ CC := arm-linux-gnueabihf-gcc
 KDIR := "User Directory Address"/kernel/linux
 PWD := $(shell pwd)
 
+
 default:$(APP)
 	$(MAKE) -C $(KDIR) M=$(PWD) modules $(CROSS)
 	cp $(MOD).ko /srv/nfs
