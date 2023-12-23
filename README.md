@@ -1,5 +1,31 @@
 # Device-Driver
 
+## 실행 방법
+1. 사전 setting
+```
+git clone --depth=1 -b rpi-6.1.y https://github.com/raspberrypi/linux
+```
+2. code 디렉터리 -> Makefile <KDIR> 수정
+
+3. make로 compile하여 .ko 파일 생성
+
+4. 디바이스 파일 생성
+```
+sudo mknod /dev/keyled_dev c 230 0
+```
+5. 모듈 적재
+```
+sudo insmod ledkey_dev_pjb.ko
+```
+6. app.c 실행
+```
+sudo ./ledkey_app_pjb [led_val(0x00~0xff)] [timer_val(1/100)]
+```
+7. 적재된 모듈 해제
+```
+sudo rmmod ledkey_dev_pjb
+```
+
 ## 구현 목표
 
 1. 디바이스 드라이버는 입출력 다중화 (Poll) , Blocking I/O를 구현하여 처리할 데이터가 없을 시 프로세스를 대기 상태로 전환하고 key 인터럽트 발생시 wake uip 하여 준비 /실행 상태로 전환하여 처리
@@ -24,19 +50,8 @@
 
 ## 구현 결과
 
-1. 모듈 적재
 
-![모듈 적재 전](https://github.com/daron135/Device-Driver/assets/140676907/3e1c1207-27bb-4979-9034-b01f8d450873)
+https://github.com/daron135/Device-Driver/assets/140676907/2649c9be-6aeb-4633-b637-e09784765e32
 
-2.  ./ledkey_app_cys 0x55 100
-   
-![0x55100Hz](https://github.com/daron135/Device-Driver/assets/140676907/b52bcb38-4b4c-4856-89b0-8013956561c8)
 
-3.  TIMER_VALUE를 이용해서 50Hz로 변경
-
-![0x55 50Hz](https://github.com/daron135/Device-Driver/assets/140676907/81d3aad5-27b4-405c-bb03-2d3676bc697f)
-
-4. LED 값을 입력 받은 0xff로 변경
-   
-![0xff](https://github.com/daron135/Device-Driver/assets/140676907/49732b45-1fc2-449a-98ae-9d2fd1874767)
    
